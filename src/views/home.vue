@@ -1,9 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    L A M I N A R
   </div>
 </template>
 
 <script lang="ts" src="./home.ts">
 </script>
+
+<style lang="scss" scoped>
+
+</style>
