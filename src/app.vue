@@ -6,6 +6,8 @@
   </div>
 </template>
 
+<script lang="ts" src="./app.ts"></script>
+
 <style lang="scss">
   body, head {
     padding: 0;
