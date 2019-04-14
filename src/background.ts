@@ -1,23 +1,30 @@
 "use strict";
-
-import { app, protocol, BrowserWindow, Tray, Menu } from "electron";
+import { app, protocol, BrowserWindow, Tray, Menu, nativeImage } from "electron";
 import {
   createProtocol,
   installVueDevtools,
 } from "vue-cli-plugin-electron-builder/lib";
+import path from "path";
 
-const isDevelopment = process.env.NODE_ENV !== "production";
+declare const __static: string;
+
+const
+  isDevelopment = process.env.NODE_ENV !== "production",
+  // TODO: when theming comes around, the user should be able to select a dark logo image for light UIs
+  icon = nativeImage.createFromPath(path.join(__static, "logo-light.png"));
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win: BrowserWindow | null;
 
 // Standard scheme must be registered before the app is ready
-protocol.registerStandardSchemes(["app"], { secure: true });
+protocol.registerStandardSchemes(["app"], {secure: true});
 
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
+    title: "Laminar",
+    icon,
     width: 800,
     height: 600,
     frame: false
@@ -35,8 +42,11 @@ function createWindow() {
     win.loadURL("app://./index.html");
   }
 
-  win.on("closed", () => {
-    win = null;
+  win.hide();
+
+  win.on("close", ev => {
+    ev.preventDefault();
+    win.hide();
   });
 }
 
@@ -45,7 +55,7 @@ app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== "darwin") {
-    app.quit();
+    // app.quit();
   }
 });
 
@@ -69,21 +79,22 @@ app.on("ready", async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }
-  createTrayFor(app);
+  createTrayIcon();
   createWindow();
 });
 
-function createTrayFor(app) {
-  setTimeout(() => {
-    debugger;
-    const
-      tray = new Tray("./logo-light.png"),
-      menu = Menu.buildFromTemplate([
-        { label: "E&xit", type: "normal", click: () => app.exit(0) }
-      ]);
-    tray.setToolTip("Laminar");
-    tray.setContextMenu(menu);
-  }, 5000);
+function createTrayIcon() {
+  const
+    tray = new Tray(icon),
+    menu = Menu.buildFromTemplate([
+      {label: "Show", type: "normal", click: () => win.show()},
+      {label: "E&xit", type: "normal", click: () => app.exit(0)},
+    ]);
+  tray.setToolTip("Laminar");
+  tray.setContextMenu(menu);
+  tray.on("double-click", () => {
+    win.show();
+  });
 }
 
 // Exit cleanly on request from parent process in development mode.

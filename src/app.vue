@@ -9,16 +9,24 @@
 <script lang="ts" src="./app.ts"></script>
 
 <style lang="scss">
+  :root {
+    --primary-background: #555;
+    --secondary-background: #444;
+    --primary-foreground: #eee;
+    --accent: #3fe;
+  }
+
   body, head {
     padding: 0;
     margin: 0;
+    background-color: var(--primary-background);
+    color: var(--primary-foreground);
   }
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
   }
 
   #nav {
