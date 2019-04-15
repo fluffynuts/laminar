@@ -15,14 +15,27 @@
 <style lang="scss">
 
   .step {
+    display: grid;
+    min-height: 100%;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 100%;
+
     .content {
-      display: flex;
     }
     .buttons {
+      display: flex;
       height: 48px;
-      position: absolute;
       width: 100%;
-      bottom: 0;
+      button {
+        cursor: pointer;
+        outline: none;
+      }
+      button:focus, button:active {
+        color: var(--accent);
+        outline: none;
+      }
+      /*position: absolute;*/
+      /*bottom: 0;*/
     }
   }
 

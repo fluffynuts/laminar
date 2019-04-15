@@ -15,6 +15,10 @@
     --primary-foreground: #eee;
     --accent: #3fe;
   }
+  html, body {
+    width: 100%;
+    height: 100%;
+  }
 
   body, head {
     padding: 0;
@@ -27,6 +31,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
+    height: 100%;
+    width: 100%;
   }
 
   #nav {

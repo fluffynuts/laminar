@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-frame">
     <div class="title-bar" ref="titleBar">
       <div class="title">{{ title }}</div>
       <div class="control" @click="close">X</div>
@@ -13,22 +13,30 @@
 <script lang="ts" src="./app-frame.ts">
 </script>
 <style lang="scss" scoped>
-  $titlebar-scale: 32px;
+  $title_scale: 32px;
+  .app-frame {
+    height: 100%;
+    width: 100%;
+  }
   .title-bar {
     width: 100%;
     background: var(--secondary-background);
     color: var(--primary-foreground);
-    line-height: $titlebar-scale;
+    line-height: $title_scale;
     display: flex;
     flex-direction: row;
-    height: $titlebar-scale;
+    height: $title_scale;
     .title {
       flex: 1;
       -webkit-app-region: drag;
     }
     .control {
-      width: $titlebar-scale;
+      width: $title_scale;
       cursor: pointer;
     }
+  }
+  .main-content {
+    height: calc(100% - #{$title_scale});
+    width: 100%;
   }
 </style>

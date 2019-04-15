@@ -88,6 +88,10 @@ function createTrayIcon() {
     tray = new Tray(icon),
     menu = Menu.buildFromTemplate([
       {label: "Show", type: "normal", click: () => win.show()},
+      {label: "Start", type: "normal", click:() => {
+        // TODO: 01_start up a session with the session service
+        }
+      },
       {label: "E&xit", type: "normal", click: () => app.exit(0)},
     ]);
   tray.setToolTip("Laminar");

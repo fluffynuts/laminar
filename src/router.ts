@@ -1,6 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/start-session.vue";
+import StartSession from "@/views/session/01_start/start-session.vue";
+import PrepareForSession from "@/views/session/02_prepare/prepare-for-session.vue";
+import Home from "@/views/home/home.vue";
+import PlanSession from "@/views/session/03_plan/plan-session.vue";
 
 Vue.use(Router);
 
@@ -11,7 +14,22 @@ export const router = new Router({
     {
       path: "/",
       name: "home",
-      component: Home,
+      component: Home
     },
+    {
+      path: "/start-session",
+      name: "start",
+      component: StartSession,
+    },
+    {
+      path: "/prepare-for-session",
+      name: "prepare",
+      component: PrepareForSession
+    },
+    {
+      path: "/plan-session",
+      name: "plan",
+      component: PlanSession
+    }
   ],
 });
