@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <app-frame>
-      <router-view/>
+      <transition>
+        <router-view/>
+      </transition>
     </app-frame>
   </div>
 </template>
@@ -26,6 +28,7 @@
     background-color: var(--primary-background);
     color: var(--primary-foreground);
   }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

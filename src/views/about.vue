@@ -1,13 +1,13 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <h2>About</h2>
+    <p>Laminar is a small utility to help you focus for a set period of time on some task(s) you wish to complete.</p>
+    <p>TODO: licensing and more blurbification</p>
   </div>
 </template>
 
-<script lang="ts">
-  import Vue from "vue";
-  import Component from "vue-class-component";
-  @Component({ name: "about" })
-  export default class About extends Vue {
-  }
-</script>
+<script lang="ts" src="./about.ts"></script>
+
+<style lang="scss" scoped>
+
+</style>
