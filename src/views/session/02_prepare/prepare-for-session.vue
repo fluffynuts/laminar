@@ -2,14 +2,16 @@
   <step>
     <div class="main" slot="content">
       <p>
-        Before planning, do you need to:
+        Before focus time, do you need to:
       </p>
-      <pre>
-        - fetch a snack
-        - fetch a beverage
-        - visit the facilities
-        - attend to something blocking a team-mate
-      </pre>
+      <ul class="check-list">
+        <li v-for="item in beforeSessionChecklist">
+          <check-item
+            :item="item"
+            @item-toggled="itemToggled"
+            @delete-item="deleteItem"></check-item>
+        </li>
+       </ul>
     </div>
     <div class="navigation" slot="buttons">
       <button class="proceed" @click="next">Establish a plan</button>

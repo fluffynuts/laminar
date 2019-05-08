@@ -16,10 +16,14 @@
     --secondary-background: #444;
     --primary-foreground: #eee;
     --accent: #3fe;
+    --larger-font-size: 32px;
+    --regular-font-size: 22px;
+    --smaller-font-size: 14px;
   }
   html, body {
     width: 100%;
     height: 100%;
+    font-size: var(--regular-font-size);
   }
 
   body, head {
@@ -49,5 +53,9 @@
         color: #42b983;
       }
     }
+  }
+
+  ul.check-list {
+    list-style: none;
   }
 </style>

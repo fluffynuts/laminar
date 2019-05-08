@@ -1,22 +1,11 @@
 import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
+import { session } from "@/store/session";
+import { SessionsState } from "@/store/session";
+import { preparation } from "@/store/preparation";
+export * from "./shared";
 
 Vue.use(Vuex);
-
-export interface CheckItem {
-  label: string;
-  checked: boolean;
-}
-
-export interface Session {
-  goals: string;
-  goalItems: CheckItem[];
-  reflections: string;
-}
-
-export interface SessionsState {
-  currentSession: Session;
-}
 
 export interface RootState {
   sessions: SessionsState;
@@ -25,18 +14,8 @@ export interface RootState {
 export function generateStoreData(): StoreOptions<RootState> {
   return {
     modules: {
-      session: {
-        namespaced: true,
-        state: {
-          currentSession: null
-        } as SessionsState,
-        getters: {
-        },
-        actions: {
-        },
-        mutations: {
-        }
-      }
+      session,
+      preparation
     }
   };
 }
